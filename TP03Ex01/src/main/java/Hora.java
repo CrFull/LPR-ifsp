@@ -1,3 +1,5 @@
+package com.mycompany.tp03ex01;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -76,6 +78,7 @@ public class Hora {
             }
             min += minutosExtras;
             valor %= 60;
+            
         }
        
         return valor; 
@@ -95,12 +98,14 @@ public class Hora {
     }
      String getHora2(){
          if(hora>24){
-             int horasExtras = hora - 24;
-             horasExtras +=hora/12;
+             int dia = (int) hora/24;
+             double horasExtras = (dia - hora) * 60;
+              return  "Convertendo as horas, minutos e segundos em d, hh:mm:ss am/pm: \n"+dia+"dias, "+ horasExtras + ":" + min +":" + seg + "";   
          }
-        return ""; 
+         return ""+(hora/12) + ":" + min + ":" + seg + ""; 
     }
      String getSegundos(){
-        return ""; 
+         
+        return ""+(3600*hora + 60*min + seg); 
     }
 }
