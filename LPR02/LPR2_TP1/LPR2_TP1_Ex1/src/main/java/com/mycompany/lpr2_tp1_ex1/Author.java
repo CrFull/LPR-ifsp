@@ -6,7 +6,10 @@ package com.mycompany.lpr2_tp1_ex1;
 
 /**
  *
- * @author joaos
+ * @author 
+ Atilio Almeida Costa
+ João Victor Crivoi Cesar Souza 
+ 
  */
 public class Author {
     private String name;
