@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 /**
  *
- * @author joaos
+* @author 
+ Atilio Almeida Costa
+ João Victor Crivoi Cesar Souza 
  */
 public class LPR2_TP1_Ex2 {
     private static Scanner ler  = new Scanner(System.in);

@@ -8,7 +8,9 @@ import java.util.Arrays;
 
 /**
  *
- * @author joaos
+* @author 
+ Atilio Almeida Costa
+ João Victor Crivoi Cesar Souza 
  */
 public class Book {
 

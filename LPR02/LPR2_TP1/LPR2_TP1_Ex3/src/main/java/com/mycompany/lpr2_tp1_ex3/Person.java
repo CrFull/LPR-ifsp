@@ -6,7 +6,9 @@ package com.mycompany.lpr2_tp1_ex3;
 
 /**
  *
- * @author joaos
+ * @author 
+ Atilio Almeida Costa
+ João Victor Crivoi Cesar Souza 
  */
 public class Person {
 
