@@ -1,0 +1,16 @@
+Script utilizado no Banco:
+
+CREATE DATABASE lpr2tbfinal;
+use lpr2tbfinal;
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- ID único para cada registro
+    nome VARCHAR(100) NOT NULL,        -- Nome do aluno
+    idade INT NOT NULL,                -- Idade do aluno
+    peso FLOAT NOT NULL,               -- Peso do aluno
+    altura FLOAT NOT NULL,             -- Altura do aluno
+    objetivo VARCHAR(255) NOT NULL     -- Objetivo do aluno
+);
+INSERT INTO aluno (nome, idade, peso, altura, objetivo)
+VALUES ('João Silva', 25, 72.5, 1.75, 'Ganhar massa muscular');
+SELECT * FROM aluno;
