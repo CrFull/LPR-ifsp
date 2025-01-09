@@ -25,7 +25,6 @@ public class CadastroAlunoAcademia  {
     private  JTextField txtNome, txtIdade, txtPeso, txtAltura, txtObjetivo;
     private JButton btnIncluir, btnLimpar, btnApresentaDados, btnSair;
     private MySQLHandler dbHandler;
-    private ResultSet rs;
     
     
      public CadastroAlunoAcademia(MySQLHandler dbHandler) {
@@ -104,7 +103,35 @@ public class CadastroAlunoAcademia  {
         btnIncluir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                insertAluno();
+                     try{
+            if(ValidadorDeCampos.isAllFieldsFilled(txtNome, txtIdade, txtPeso, txtAltura, txtObjetivo)){
+                
+                if(ValidadorDeCampos.isAllFieldsCorrect(txtNome, txtIdade, txtPeso, txtAltura, txtObjetivo)){
+                    Aluno aluno = new Aluno(
+                txtNome.getText(), 
+               Integer.parseInt(txtIdade.getText()), 
+                Float.parseFloat(txtPeso.getText()), 
+               Float.parseFloat(txtAltura.getText()), 
+              txtObjetivo.getText()
+                );
+                
+                dbHandler.insertAluno(aluno);
+                JOptionPane.showMessageDialog(frame, "Dados incluídos com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                     JOptionPane.showMessageDialog(frame, "Há campos Inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                    
+    
+            }
+            else{
+                JOptionPane.showMessageDialog(frame, "Há campos Vazios!", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(frame, "Falha ao inserir!", "Erro", JOptionPane.ERROR_MESSAGE);
+             ex.printStackTrace();
+        }
             }
         });
 
@@ -162,38 +189,5 @@ public class CadastroAlunoAcademia  {
         });
     }
     
-    private boolean isEmpty(JTextField ... campos){
-        for (JTextField campo : campos) {
-            if (campo.getText().trim().isEmpty()) {
-                return true; 
-            }
-        }
-        return false; 
-    }
-    
-    private void insertAluno(){
-        try{
-            if(!isEmpty(txtNome, txtIdade, txtPeso, txtAltura, txtObjetivo)){
-                Aluno aluno = new Aluno(
-                txtNome.getText(), 
-               Integer.parseInt(txtIdade.getText()), 
-                Float.parseFloat(txtPeso.getText()), 
-               Float.parseFloat(txtAltura.getText()), 
-              txtObjetivo.getText()
-                );
-                
-                dbHandler.insertAluno(aluno);
-                JOptionPane.showMessageDialog(frame, "Dados incluídos com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
-                JOptionPane.showMessageDialog(frame, "Há campos Vazios!", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-            
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(frame, "Falha ao inserir!", "Erro", JOptionPane.ERROR_MESSAGE);
-             ex.printStackTrace();
-        }
-    }
- 
 }
 
